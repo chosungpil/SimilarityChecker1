@@ -45,9 +45,7 @@ private:
 		int sameCount = getSameCount(firstParam, secondParam);
 		int totalCount = getTotalCount(firstParam, secondParam);
 
-		double temp = static_cast<double>(sameCount / static_cast<double>(totalCount));
-
-		return temp * MAX_POINT_FOR_ALPHA_CHECKER;
+		return static_cast<double>(sameCount / static_cast<double>(totalCount)) * MAX_POINT_FOR_ALPHA_CHECKER;
 	}
 	int getSameCount(string firstParam, string secondParam)
 	{
