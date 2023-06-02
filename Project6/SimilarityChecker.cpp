@@ -8,7 +8,7 @@ class SimilarityChecker
 public:
 	int checkLengthSimilarity(string firstParam, string secondParam)
 	{
-		if( true == isTwoTimesLong(firstParam, secondParam))
+		if( true == isTwoTimesLong(firstParam.size(), secondParam.size()))
 		{
 			return 0;
 		}
@@ -30,14 +30,25 @@ private:
 		auto point = absNum / static_cast<double>(divisor);
 		return point * 60;
 	}
-
-	bool isTwoTimesLong(string firstParam, string secondParam)
+	bool isSecondParamTwoTimesBigger(int firstNumber, int secondNumber)
 	{
-		if (secondParam.size() >= (firstParam.size() * 2))
+		if (secondNumber >= (firstNumber * 2))
+			return true;
+		return false;
+	}
+	bool isFirstParamTwoTimesBigger(int firstNumber, int secondNumber)
+	{
+		if (firstNumber >= (secondNumber * 2))
+			return true;
+		return false;
+	}
+	bool isTwoTimesLong(int firstParamSize, int secondParamSize)
+	{
+		if (true == isSecondParamTwoTimesBigger(firstParamSize, secondParamSize))
 		{
 			return true;
 		}
-		if (firstParam.size() >= (secondParam.size() * 2))
+		if (true == isFirstParamTwoTimesBigger(firstParamSize, secondParamSize))
 		{
 			return true;
 		}
