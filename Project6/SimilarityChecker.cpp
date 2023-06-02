@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include <iostream>
 #include <cstdlib>
 #include <string>
@@ -24,6 +25,13 @@ public:
 	}
 	int checkAlphaSimilarity(string firstParam, string secondParam)
 	{
+		for(char firstParamChar : firstParam)
+		{
+			if(firstParamChar < 'A' || firstParamChar > 'Z')
+			{
+				throw std::invalid_argument("Upper case only");
+			}
+		}
 		if(firstParam.size() != secondParam.size())
 		{
 			if (false == isSameCharExist(firstParam, secondParam))
@@ -34,6 +42,7 @@ public:
 		return 40;
 	}
 private:
+
 	bool isSameCharExist(string firstParam, string secondParam)
 	{
 		bool hasSameChar = false;

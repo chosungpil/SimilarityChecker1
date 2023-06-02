@@ -26,3 +26,6 @@ TEST_F(SimilarityChecker_Fixture, AlphaPerfectMatch) {
 TEST_F(SimilarityChecker_Fixture, AlphaNeverMatch) {
 	EXPECT_EQ(0, similarityChecker.checkAlphaSimilarity("A", "BB"));
 }
+TEST_F(SimilarityChecker_Fixture, AlphaLowerCase) {
+	EXPECT_THROW(similarityChecker.checkAlphaSimilarity("a", "Bb"), std::invalid_argument);
+}
