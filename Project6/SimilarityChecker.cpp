@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <string>
 using namespace std;
 
@@ -11,19 +12,25 @@ public:
 		{
 			return 0;
 		}
-		if(firstParam.size() > secondParam.size())
+
+		if(firstParam.size() != secondParam.size())
 		{
-			double point = static_cast<double>(firstParam.size() - secondParam.size()) / static_cast<double>(secondParam.size());
-			return point * 60;
+			return calculatePartialPoint(firstParam.size(), secondParam.size());
 		}
-		if (secondParam.size() > firstParam.size())
-		{
-			double point = static_cast<double>(secondParam.size() - firstParam.size()) / static_cast<double>(firstParam.size());
-			return point * 60;
-		}
+
 		return 60;
 	}
 private:
+	int calculatePartialPoint(int firstNumber, int secondNumber)
+	{
+		int absNum = abs((firstNumber - secondNumber));
+		int divisor = firstNumber;
+		if (firstNumber > secondNumber)
+			divisor = secondNumber;
+		auto point = absNum / static_cast<double>(divisor);
+		return point * 60;
+	}
+
 	bool isTwoTimesLong(string firstParam, string secondParam)
 	{
 		if (secondParam.size() >= (firstParam.size() * 2))
