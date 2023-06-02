@@ -29,3 +29,6 @@ TEST_F(SimilarityChecker_Fixture, AlphaNeverMatch) {
 TEST_F(SimilarityChecker_Fixture, AlphaLowerCase) {
 	EXPECT_THROW(similarityChecker.checkAlphaSimilarity("a", "Bb"), std::invalid_argument);
 }
+TEST_F(SimilarityChecker_Fixture, AlphaPartialMatch) {
+	EXPECT_EQ(40, similarityChecker.checkAlphaSimilarity("AAABB", "BA"));
+}

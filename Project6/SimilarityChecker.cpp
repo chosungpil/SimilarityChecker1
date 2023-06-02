@@ -6,6 +6,7 @@ using namespace std;
 constexpr int PARTIAL_POINT_MULTIPLIER = 60;
 constexpr int MAX_POINT_FOR_LENGTH_CHECKER = 60;
 constexpr int MAX_POINT_FOR_ALPHA_CHECKER = 40;
+constexpr int MAX_ALPHA_NUM = 26;
 class SimilarityChecker
 {
 public:
@@ -20,6 +21,7 @@ public:
 		{
 			return calculatePartialPoint(firstParam.size(), secondParam.size());
 		}
+		
 
 		return MAX_POINT_FOR_LENGTH_CHECKER;
 	}
@@ -33,9 +35,56 @@ public:
 				return 0;
 			}
 		}
-		return 40;
+		else if (firstParam.size() == secondParam.size())
+		{
+			return 40;
+		}
+		int sameCount = getSameCount(firstParam, secondParam);
+		int totalCount = getTotalCount(firstParam, secondParam);
+		cout << sameCount << endl;
+		cout << totalCount << endl;
+		return (sameCount / totalCount) * 40;
+
 	}
 private:
+	int getSameCount(string firstParam, string secondParam)
+	{
+		int sameCount = 0;
+		bool alphaCountArrayForFirstParam[MAX_ALPHA_NUM]{ false };
+		for (char firstParamChar : firstParam)
+		{
+			if (false == alphaCountArrayForFirstParam[firstParamChar - 'A'])
+			{
+				if (string::npos != secondParam.find(firstParamChar))
+				{
+					sameCount++;
+					alphaCountArrayForFirstParam[firstParamChar - 'A'] = true;
+				}
+			}
+		}
+		return sameCount;
+	}
+	int getTotalCount(string firstParam, string secondParam)
+	{
+		bool alphaCountArray[MAX_ALPHA_NUM]{ false };
+		for (char firstParamChar : firstParam)
+		{
+			alphaCountArray[firstParamChar - 'A'] = true;
+		}
+		for (char secondParamChar : secondParam)
+		{
+			alphaCountArray[secondParamChar - 'A'] = true;
+		}
+		int totalCount = 0;
+		for (auto isExist : alphaCountArray)
+		{
+			if (isExist)
+			{
+				totalCount++;
+			}
+		}
+		return totalCount;
+	}
 	void assertionForLowerCase(string firstParam, string secondParam)
 	{
 		for (char firstParamChar : firstParam)
@@ -91,4 +140,6 @@ private:
 		}
 		return false;
 	}
+	
+	bool alphaCountArrayForSecondParam[MAX_ALPHA_NUM]{ false };
 };
