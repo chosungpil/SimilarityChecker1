@@ -2,7 +2,8 @@
 #include <cstdlib>
 #include <string>
 using namespace std;
-
+constexpr int PARTIAL_POINT_MULTIPLIER = 60;
+constexpr int MAX_POINT_FOR_LENGTH_CHECKER = 60;
 class SimilarityChecker
 {
 public:
@@ -18,7 +19,7 @@ public:
 			return calculatePartialPoint(firstParam.size(), secondParam.size());
 		}
 
-		return 60;
+		return MAX_POINT_FOR_LENGTH_CHECKER;
 	}
 private:
 	int calculatePartialPoint(int firstNumber, int secondNumber)
@@ -28,7 +29,7 @@ private:
 		if (firstNumber > secondNumber)
 			divisor = secondNumber;
 		auto point = absNum / static_cast<double>(divisor);
-		return point * 60;
+		return point * PARTIAL_POINT_MULTIPLIER;
 	}
 	bool isSecondParamTwoTimesBigger(int firstNumber, int secondNumber)
 	{
