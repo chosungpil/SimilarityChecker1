@@ -15,8 +15,8 @@ TEST_F(SimilarityChecker_Fixture, FirstParamTwoTimesLongerThanSecondParam) {
 	EXPECT_EQ(0, similarityChecker.checkLengthSimilarity("AA", "D"));
 }
 TEST_F(SimilarityChecker_Fixture, PartialPointWithLongFirstParam) {
-	EXPECT_EQ(40, similarityChecker.checkLengthSimilarity("AAABB", "BAA"));
+	EXPECT_EQ(20, similarityChecker.checkLengthSimilarity("AAABB", "BAA"));
 }
 TEST_F(SimilarityChecker_Fixture, PartialPointWithLongSecondParam) {
-	EXPECT_EQ(40, similarityChecker.checkLengthSimilarity("BAA", "AAABB"));
+	EXPECT_EQ(20, similarityChecker.checkLengthSimilarity("BAA", "AAABB"));
 }

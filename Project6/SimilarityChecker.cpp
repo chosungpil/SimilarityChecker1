@@ -29,7 +29,7 @@ private:
 		if (firstNumber > secondNumber)
 			divisor = secondNumber;
 		auto point = absNum / static_cast<double>(divisor);
-		return point * PARTIAL_POINT_MULTIPLIER;
+		return (1-point) * PARTIAL_POINT_MULTIPLIER;
 	}
 	bool isSecondParamTwoTimesBigger(int firstNumber, int secondNumber)
 	{
