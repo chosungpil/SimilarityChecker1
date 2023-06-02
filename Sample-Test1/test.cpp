@@ -32,3 +32,6 @@ TEST_F(SimilarityChecker_Fixture, AlphaLowerCase) {
 TEST_F(SimilarityChecker_Fixture, AlphaPartialMatch) {
 	EXPECT_EQ(40, similarityChecker.checkAlphaSimilarity("AAABB", "BA"));
 }
+TEST_F(SimilarityChecker_Fixture, AlphaPartialMatch2) {
+	EXPECT_EQ(20, similarityChecker.checkAlphaSimilarity("AA", "AAE"));
+}
