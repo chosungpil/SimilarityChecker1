@@ -4,6 +4,7 @@
 using namespace std;
 constexpr int PARTIAL_POINT_MULTIPLIER = 60;
 constexpr int MAX_POINT_FOR_LENGTH_CHECKER = 60;
+constexpr int MAX_POINT_FOR_ALPHA_CHECKER = 40;
 class SimilarityChecker
 {
 public:
@@ -20,6 +21,10 @@ public:
 		}
 
 		return MAX_POINT_FOR_LENGTH_CHECKER;
+	}
+	int checkAlphaSimilarity(string firstParam, string secondParam)
+	{
+		return 40;
 	}
 private:
 	int calculatePartialPoint(int firstNumber, int secondNumber)
