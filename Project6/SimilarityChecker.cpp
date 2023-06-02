@@ -26,25 +26,7 @@ public:
 	{
 		if(firstParam.size() != secondParam.size())
 		{
-			bool hasSameChar = false;
-			for(char firstParamChar : firstParam)
-			{
-				bool isFirstCharExist = false;
-				
-				for (char secondParamChar : secondParam)
-				{
-					if( firstParamChar == secondParamChar)
-					{
-						isFirstCharExist = true;
-						break;
-					}
-				}
-				if(true == isFirstCharExist)
-				{
-					hasSameChar = true;
-				}
-			}
-			if (false == hasSameChar)
+			if (false == isSameCharExist(firstParam, secondParam))
 			{
 				return 0;
 			}
@@ -52,6 +34,18 @@ public:
 		return 40;
 	}
 private:
+	bool isSameCharExist(string firstParam, string secondParam)
+	{
+		bool hasSameChar = false;
+		for (char firstParamChar : firstParam)
+		{
+			if (string::npos != secondParam.find(firstParamChar))
+			{
+				hasSameChar = true;
+			}
+		}
+		return hasSameChar;
+	}
 	int calculatePartialPoint(int firstNumber, int secondNumber)
 	{
 		int absNum = abs((firstNumber - secondNumber));
