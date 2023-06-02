@@ -1,5 +1,14 @@
 #include "pch.h"
 #include "../Project6/SimilarityChecker.cpp"
-TEST(TestCaseName, TestName) {
-  EXPECT_EQ(1, 1);
+TEST(SimilarityCheckerTest, PerfectMatch) {
+	SimilarityChecker similarityChecker;
+	EXPECT_EQ(60, similarityChecker.checkLengthSimilarity("ASD", "DSA"));
+}
+TEST(SimilarityCheckerTest, SecondParamTwoTimesLongerThanFirstParam) {
+	SimilarityChecker similarityChecker;
+	EXPECT_EQ(0, similarityChecker.checkLengthSimilarity("A", "DS"));
+}
+TEST(SimilarityCheckerTest, FirstParamTwoTimesLongerThanSecondParam) {
+	SimilarityChecker similarityChecker;
+	EXPECT_EQ(0, similarityChecker.checkLengthSimilarity("AA", "D"));
 }
