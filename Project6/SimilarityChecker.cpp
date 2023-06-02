@@ -25,13 +25,7 @@ public:
 	}
 	int checkAlphaSimilarity(string firstParam, string secondParam)
 	{
-		for(char firstParamChar : firstParam)
-		{
-			if(firstParamChar < 'A' || firstParamChar > 'Z')
-			{
-				throw std::invalid_argument("Upper case only");
-			}
-		}
+		assertionForLowerCase(firstParam, secondParam);
 		if(firstParam.size() != secondParam.size())
 		{
 			if (false == isSameCharExist(firstParam, secondParam))
@@ -42,7 +36,16 @@ public:
 		return 40;
 	}
 private:
-
+	void assertionForLowerCase(string firstParam, string secondParam)
+	{
+		for (char firstParamChar : firstParam)
+		{
+			if (firstParamChar < 'A' || firstParamChar > 'Z')
+			{
+				throw std::invalid_argument("Upper case only");
+			}
+		}
+	}
 	bool isSameCharExist(string firstParam, string secondParam)
 	{
 		bool hasSameChar = false;
