@@ -35,18 +35,17 @@ public:
 				return 0;
 			}
 		}
-		else if (firstParam.size() == secondParam.size())
-		{
-			return 40;
-		}
-		int sameCount = getSameCount(firstParam, secondParam);
-		int totalCount = getTotalCount(firstParam, secondParam);
-		cout << sameCount << endl;
-		cout << totalCount << endl;
-		return (sameCount / totalCount) * 40;
+
+		return calculateAlphaPoint(firstParam, secondParam);
 
 	}
 private:
+	int calculateAlphaPoint(string firstParam, string secondParam)
+	{
+		int sameCount = getSameCount(firstParam, secondParam);
+		int totalCount = getTotalCount(firstParam, secondParam);
+		return (sameCount / totalCount) * MAX_POINT_FOR_ALPHA_CHECKER;
+	}
 	int getSameCount(string firstParam, string secondParam)
 	{
 		int sameCount = 0;
