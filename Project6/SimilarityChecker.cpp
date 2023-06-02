@@ -24,6 +24,31 @@ public:
 	}
 	int checkAlphaSimilarity(string firstParam, string secondParam)
 	{
+		if(firstParam.size() != secondParam.size())
+		{
+			bool hasSameChar = false;
+			for(char firstParamChar : firstParam)
+			{
+				bool isFirstCharExist = false;
+				
+				for (char secondParamChar : secondParam)
+				{
+					if( firstParamChar == secondParamChar)
+					{
+						isFirstCharExist = true;
+						break;
+					}
+				}
+				if(true == isFirstCharExist)
+				{
+					hasSameChar = true;
+				}
+			}
+			if (false == hasSameChar)
+			{
+				return 0;
+			}
+		}
 		return 40;
 	}
 private:

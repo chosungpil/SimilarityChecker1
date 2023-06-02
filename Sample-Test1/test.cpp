@@ -23,3 +23,6 @@ TEST_F(SimilarityChecker_Fixture, LengthPartialPointWithLongSecondParam) {
 TEST_F(SimilarityChecker_Fixture, AlphaPerfectMatch) {
 	EXPECT_EQ(40, similarityChecker.checkAlphaSimilarity("ASD", "DSA"));
 }
+TEST_F(SimilarityChecker_Fixture, AlphaNeverMatch) {
+	EXPECT_EQ(0, similarityChecker.checkAlphaSimilarity("A", "BB"));
+}
