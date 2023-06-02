@@ -1,5 +1,22 @@
 #include "pch.h"
 #include "../Project6/SimilarityChecker.cpp"
-TEST(TestCaseName, TestName) {
-  EXPECT_EQ(1, 1);
+class SimilarityChecker_Fixture : public testing::Test
+{
+public:
+	SimilarityChecker similarityChecker;
+};
+TEST_F(SimilarityChecker_Fixture, PerfectMatch) {
+	EXPECT_EQ(60, similarityChecker.checkLengthSimilarity("ASD", "DSA"));
+}
+TEST_F(SimilarityChecker_Fixture, SecondParamTwoTimesLongerThanFirstParam) {
+	EXPECT_EQ(0, similarityChecker.checkLengthSimilarity("A", "DS"));
+}
+TEST_F(SimilarityChecker_Fixture, FirstParamTwoTimesLongerThanSecondParam) {
+	EXPECT_EQ(0, similarityChecker.checkLengthSimilarity("AA", "D"));
+}
+TEST_F(SimilarityChecker_Fixture, PartialPointWithLongFirstParam) {
+	EXPECT_EQ(20, similarityChecker.checkLengthSimilarity("AAABB", "BAA"));
+}
+TEST_F(SimilarityChecker_Fixture, PartialPointWithLongSecondParam) {
+	EXPECT_EQ(20, similarityChecker.checkLengthSimilarity("BAA", "AAABB"));
 }
